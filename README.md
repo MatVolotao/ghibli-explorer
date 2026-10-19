@@ -1,75 +1,138 @@
-# React + TypeScript + Vite
+# Ghibli Explorer 🌿
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Uma aplicação web para explorar filmes do **Studio Ghibli**, conhecer suas histórias e descobrir informações sobre suas produções.
 
-Currently, two official plugins are available:
+Desenvolvido com **React, TypeScript e Tailwind CSS**, o projeto apresenta uma interface responsiva inspirada na atmosfera acolhedora e natural dos filmes do estúdio.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Demonstração online
 
-## React Compiler
+Acesse o Ghibli Explorer:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+🌿 [Visualizar aplicação](https://matvolotao.github.io/ghibli-explorer/)
 
-## Expanding the ESLint configuration
+## Funcionalidades
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Listagem dos 10 primeiros filmes em ordem alfabética.
+- Exibição de banners e títulos dos filmes.
+- Navegação entre o catálogo e as páginas de detalhes.
+- Página individual com sinopse, diretor, produtor, ano de lançamento e avaliação do Rotten Tomatoes.
+- Estados de carregamento e tratamento de erros.
+- Cancelamento de requisições pendentes com `AbortController`.
+- Interface responsiva para dispositivos móveis, tablets e desktops.
+- Navegação com React Router.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Tecnologias utilizadas
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **React** — Construção da interface e dos componentes.
+- **TypeScript** — Tipagem estática e organização dos contratos de dados.
+- **Vite** — Ambiente de desenvolvimento e build.
+- **Tailwind CSS v4** — Estilização e responsividade.
+- **React Router** — Navegação entre páginas.
+- **Studio Ghibli API** — Fonte de informações sobre os filmes.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Estrutura do projeto
 
+```text
+src/
+├── components/
+│   └── FilmCard.tsx
+├── hooks/
+│   ├── useFilm.ts
+│   └── useFilms.ts
+├── pages/
+│   ├── FilmDetails.tsx
+│   └── Home.tsx
+├── routes/
+│   └── AppRoutes.tsx
+├── services/
+│   └── ghibliApi.ts
+├── types/
+│   └── film.ts
+├── App.tsx
+├── index.css
+└── main.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+### Organização da arquitetura
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+O projeto utiliza separação de responsabilidades:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **Components:** componentes visuais reutilizáveis.
+- **Pages:** páginas e apresentação dos dados.
+- **Hooks:** gerenciamento de estados, efeitos e ciclo de vida das requisições.
+- **Services:** comunicação com a API.
+- **Routes:** configuração das rotas da aplicação.
+- **Types:** interfaces TypeScript para representar os dados.
 
+## Como executar localmente
+
+### Pré-requisitos
+
+- Node.js e npm instalados.
+- Git instalado para clonar o repositório.
+
+### Instalação
+
+Clone o repositório:
+
+```bash
+git clone https://github.com/MatVolotao/ghibli-explorer.git
 ```
+
+Entre na pasta:
+
+```bash
+cd ghibli-explorer
+```
+
+Instale as dependências:
+
+```bash
+npm install
+```
+
+Inicie o servidor de desenvolvimento:
+
+```bash
+npm run dev
+```
+
+Abra o endereço indicado pelo Vite no terminal, normalmente:
+
+`http://localhost:5173/`
+
+### Verificações de qualidade
+
+```bash
+npm run lint
+npm run build
+```
+
+O build de produção é gerado na pasta `dist/`.
+
+## API utilizada
+
+Os dados dos filmes são obtidos pela **Studio Ghibli API**:
+
+https://ghibliapi.vercel.app/
+
+A aplicação utiliza os endpoints de listagem e consulta individual de filmes.
+
+## Objetivo do projeto
+
+Este projeto foi desenvolvido para praticar e consolidar conhecimentos de desenvolvimento frontend, incluindo:
+
+- Consumo de APIs REST.
+- Componentização em React.
+- Custom Hooks.
+- React Router e rotas dinâmicas.
+- Gerenciamento de estados assíncronos.
+- Tratamento de erros e cancelamento de requisições.
+- Estilização responsiva com Tailwind CSS.
+- Organização de código e separação de responsabilidades.
+
+## Créditos
+
+As obras, personagens e imagens pertencem aos seus respectivos titulares.
+
+Projeto independente, desenvolvido para fins educacionais e de portfólio, sem afiliação oficial com o Studio Ghibli.
